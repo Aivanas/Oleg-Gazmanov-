@@ -4,9 +4,56 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Oleg_Gazmanov_Pleer"
+        xmlns:bootstrap="http://schemas.rpj.com/WPFBootstrapUI"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Oleg Gazmanov Pleer" Height="450" Width="800"
+        FontFamily="Ubuntu"
+        
+        Foreground="White">
     <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="/Gazmanov.png" AlignmentY="Center" AlignmentX="Center"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button Margin="5 0 5 0" Opacity="0.8" x:Name="choose_path" Style="{StaticResource btn-secondary}" VerticalAlignment="Center" Click="Button_Click">Выбрать путь</Button>
+        <ListBox Opacity="0.5" Margin="10" Grid.Row="1"   x:Name="Files_list" MouseDoubleClick="Files_list_MouseDoubleClick">
+            <ListBox.Resources>
+                <Style BasedOn="{StaticResource listboxitem-success}" TargetType="{x:Type ListBoxItem}" />
+            </ListBox.Resources>
+            <ListBoxItem IsEnabled="False" Opacity="0.5">В папке проекта лежит лучшая песня на свете</ListBoxItem>
+        </ListBox>
+        <MediaElement x:Name="media" LoadedBehavior="Manual" Source="/song.mp3" Grid.Row="2" VerticalAlignment="Center" Margin="5" Grid.ColumnSpan="2" MediaOpened="media_MediaOpened" />
+        <Slider x:Name="ProgressSlider" Grid.Row="2" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="5" ValueChanged="Slider_ValueChanged"/>
 
+        <Grid Grid.Row="3" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="back_BT" Grid.Column="0" HorizontalAlignment="Center" Margin="0 0 0 5" Grid.Row="4" Click="back_BT_Click">Назад</Button>
+            <Button x:Name="Play_BT" Grid.Column="1" HorizontalAlignment="Center" Margin="0 0 0 5" Click="Play_BT_Click">| |</Button>
+            <Button x:Name="next_BT" Grid.Column="2" HorizontalAlignment="Center" Margin="0 0 0 5" Grid.Row="4" Click="next_BT_Click">Вперд</Button>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="6*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Slider x:Name="volume" Orientation="Vertical" HorizontalAlignment="Center" Margin="0 20" ValueChanged="Slider_ValueChanged_1" Maximum="100"/>
+            <TextBlock Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25">Громкость</TextBlock>
+
+        </Grid>
     </Grid>
 </Window>

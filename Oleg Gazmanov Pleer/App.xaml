@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:Oleg_Gazmanov_Pleer"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/WPFBootstrapUI;Component/Styles/Colors.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WPFBootstrapUI;Component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WPFBootstrapUI;Component/Themes/BootstrapUI.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
